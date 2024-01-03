@@ -1,0 +1,55 @@
+---
+title: "Visualisasi Nilai Semester"
+author: "Muhammad Devin Ardiansyah"
+date: "2023-12-27"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ini merupakan hasil visualisasi data nilai semester 2 sampai 4
+
+menggunakan read_excel untuk import data frame berupa data nilai semester dan menggunakan packages "tidyverse" dan "ggplot2" 
+
+
+## Ini merupakan data visualisasi nilainya:
+
+```{r loading packages}
+library("ggplot2")
+library("readxl")
+
+```
+  ## Visualisasi nilai semester 2
+```{r fig2, fig.height = 10, fig.width = 28}
+Latihan_Grafis <- read_excel("Nilai_Semester_2.xlsx")
+ggplot(data = Latihan_Grafis, aes(x = COURSE, y = TOTAL, fill = COURSE)) +
+geom_col()+ theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12)) +  
+geom_text(aes(label = TOTAL), vjust = -0.5)+ labs(title = "Nilai Semester 2",subtitle ="Total SKS = 24")
+```
+
+
+ ## Visualisasi nilai semester 3
+```{r fig3, fig.height = 10, fig.width = 28}
+Nilai_Semester_3 <-read_excel("Nilai_Semester_3.xlsx")
+ggplot(data = Nilai_Semester_3, aes(x = COURSE, y = TOTAL, fill = COURSE)) + geom_col() + 
+theme(axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 12)) +
+geom_text(aes(label = TOTAL), vjust = -0.5) + labs(title ="Nilai Semester 3",subtitle ="Total SKS = 22")
+```
+
+
+
+## visualisasi nilai semester 4
+```{r fig4, fig.height = 10, fig.width = 28}
+Nilai_Semester_4 <- read_excel("Nilai_Semester_4.xlsx")
+ggplot(data = Nilai_Semester_4 ,aes(x = COURSE, y= TOTAL, fill = COURSE)) + 
+geom_col() +theme(axis.text.x=element_text(size=12),axis.text.y=element_text(size = 12)) + 
+geom_text(aes(label = TOTAL), vjust =-0.5) + labs(title ="Nilai Semester 4",subtitle = "Total SKS = 18")
+
+```
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
